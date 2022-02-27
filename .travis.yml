@@ -8,3 +8,16 @@ defore_install:
 # Series of command required
 script:
   - docker run amadasif/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: amad-docker-react
+  env: Docker-env
+  bucket_name: elasticbeanstalk-us-west-2-amad-test-react
+  bucket_path: docker_react
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
