@@ -9,6 +9,8 @@ RUN npm run build
 
 # Now write for the run phase, FROM starts the second phase
 FROM nginx
+# Elastic beanstalk will map this port to incomming traffic
+EXPOSE 80
 # Nginx serves static content from the /usr/share/nginx/html directory
 COPY --from=builder /app/build /usr/share/nginx/html
 # The default command for Nginx starts the server so no extra command here is requried
