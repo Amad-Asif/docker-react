@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+# Some series of steps requried before steps
+defore_install:
+  - docker build -t amadasif/docker-react -f Dockerfile.dev .
+
+# Series of command required
+script:
+  - docker run amadasif/docker-react npm run test -- --coverage
